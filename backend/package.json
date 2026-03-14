@@ -1,0 +1,20 @@
+{
+  "name": "remote-interview-platform-backend",
+  "version": "1.0.0",
+  "description": "A realtime remote interview platform",
+  "homepage": "https://github.com/abhishekjaiswar221/remote-interview-platform#readme",
+  "bugs": {
+    "url": "https://github.com/abhishekjaiswar221/remote-interview-platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishekjaiswar221/remote-interview-platform.git"
+  },
+  "license": "MIT",
+  "author": "Abhishek Jaiswar",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
