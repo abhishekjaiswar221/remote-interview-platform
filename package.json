@@ -1,7 +1,7 @@
 {
-  "name": "remote-interview-platform-backend",
+  "name": "remote-interview-platform",
   "version": "1.0.0",
-  "description": "A realtime remote interview platform",
+  "description": "Video calling remote interview platform",
   "homepage": "https://github.com/abhishekjaiswar221/remote-interview-platform#readme",
   "bugs": {
     "url": "https://github.com/abhishekjaiswar221/remote-interview-platform/issues"
@@ -11,20 +11,11 @@
     "url": "git+https://github.com/abhishekjaiswar221/remote-interview-platform.git"
   },
   "license": "MIT",
-  "keywords": [],
   "author": "Abhishek Jaiswar",
   "type": "module",
-  "main": "./src/server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/server.js",
-    "start": "node ./src/server.js"
-  },
-  "dependencies": {
-    "dotenv": "17.2.3",
-    "express": "5.1.0",
-    "mongoose": "8.19.1"
-  },
-  "devDependencies": {
-    "nodemon": "3.1.10"
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
   }
 }
