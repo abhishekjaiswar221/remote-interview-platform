@@ -1,5 +1,7 @@
+import { serve } from "inngest/express";
 import { app } from "./app.js";
-import { connectMongoDB } from "./database/db.js";
+import { connectMongoDB } from "./config/db.js";
+import { inngest, functions } from "./config/inngest.js";
 import { ENV } from "./lib/env.js";
 
 const startServer = async () => {
@@ -18,3 +20,5 @@ startServer();
 app.get("/api", (_, res) => {
   res.status(200).json({ msg: "Success from Backend API" });
 });
+
+app.get("/api/inngest", serve({ client: inngest, functions }));
