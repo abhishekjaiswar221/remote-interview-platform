@@ -18,7 +18,7 @@
     "start:frontend": "cd frontend && npm run dev",
     "start:backend": "cd backend && npm run dev",
     "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "build": "npm install --omit=dev --prefix backend && npm install --omit=dev --prefix frontend && npm run build --prefix frontend",
     "start": "npm run start --prefix backend"
   },
   "devDependencies": {
