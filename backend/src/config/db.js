@@ -8,9 +8,7 @@ export const connectMongoDB = async () => {
         "MongoDB URI in not defined in the environment variables",
       );
     }
-    const connect = await mongoose.connect(
-      `${ENV.MONGO_DB_URI}/${ENV.DATABASE_NAME}`,
-    );
+    const connect = await mongoose.connect(`${ENV.MONGO_DB_URI}`);
     console.log(
       "✅ Connected to MongoDB Successfully:",
       connect.connection.host,
