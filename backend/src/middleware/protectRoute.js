@@ -10,12 +10,12 @@ export const protectRoute = [
       if (!clerkId)
         return res
           .status(401)
-          .json({ msg: "Unauthorized - invalid auth token" });
+          .json({ message: "Unauthorized - invalid auth token" });
 
       // Find the user in mongo db using the clerk ID
       const user = await User.findOne({ clerkId });
 
-      if (!user) return res.status(404).json({ msg: "User not found" });
+      if (!user) return res.status(404).json({ message: "User not found" });
 
       // Attach user to req
       req.user = user;
