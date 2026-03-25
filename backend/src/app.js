@@ -6,6 +6,7 @@ import path from "path";
 import { functions, inngest } from "./config/inngest.js";
 import { ENV } from "./lib/env.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import sessionRoutes from "./routes/sessionRoutes.js";
 
 export const app = express();
 
@@ -22,6 +23,7 @@ app.get("/api", (_, res) => {
 
 app.use("/api/inngest", serve({ client: inngest, functions })); // Endpoint to sync Inngest with the app
 app.use("/api/chat", chatRoutes);
+app.use("/api/sessions", sessionRoutes);
 
 // When you pass an array of middleware to Express, it automatically flattens and executes them sequentially, one by one
 // app.get("/video-calls", protectRoute, (req, res) => {
