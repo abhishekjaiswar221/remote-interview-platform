@@ -11,8 +11,8 @@ const Socials = ({ styles }) => {
       path: "https://github.com/abhishekjaiswar221",
       icon: (
         <IconBrandGithub
-          className={`${styles} box-content rounded-lg p-1 hover:bg-zinc-800 hover:text-indigo-400`}
-          size={20}
+          className={`${styles} hover:bg-base-100 box-content rounded-lg p-1 hover:text-indigo-400`}
+          size={22}
           strokeWidth={1.5}
         />
       ),
@@ -22,8 +22,8 @@ const Socials = ({ styles }) => {
       path: "https://linkedin.com/in/abhishekjai221",
       icon: (
         <IconBrandLinkedin
-          className={`${styles} box-content rounded-lg p-1 hover:bg-zinc-800 hover:text-indigo-400`}
-          size={20}
+          className={`${styles} hover:bg-base-100 box-content rounded-lg p-1 hover:text-indigo-400`}
+          size={22}
           strokeWidth={1.5}
         />
       ),
@@ -33,8 +33,8 @@ const Socials = ({ styles }) => {
       path: "https://x.com/abhishekjai221",
       icon: (
         <IconBrandTwitter
-          className={`${styles} box-content rounded-lg p-1 hover:bg-zinc-800 hover:text-indigo-400`}
-          size={20}
+          className={`${styles} hover:bg-base-100 box-content rounded-lg p-1 hover:text-indigo-400`}
+          size={22}
           strokeWidth={1.5}
         />
       ),

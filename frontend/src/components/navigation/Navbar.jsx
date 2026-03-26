@@ -28,7 +28,7 @@ const Navbar = () => {
 
           {/* Auth Btn */}
           <SignInButton mode="modal">
-            <button className="group from-primary to-secondary flex items-center gap-2 rounded-xl bg-gradient-to-r px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+            <button className="group from-primary to-secondary flex cursor-pointer items-center gap-2 rounded-xl bg-gradient-to-r px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
               <span>Get Started</span>
               <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
             </button>

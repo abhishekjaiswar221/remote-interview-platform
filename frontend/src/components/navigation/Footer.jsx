@@ -6,20 +6,20 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="flex w-full flex-col gap-1 border-t border-zinc-700/60 py-5 lg:text-zinc-400"
+      className="border-primary/20 flex w-full flex-col gap-1 border-t py-5"
     >
       <div className="flex flex-col items-center justify-center gap-2">
         <div>
-          <p className="text-center">Stay Connected</p>
+          <p className="text-center tracking-wider">Stay Connected</p>
         </div>
         <div>
-          <Socials styles={"text-zinc-200 lg:text-zinc-400"} />
+          <Socials styles={"text-base-content/70"} />
         </div>
       </div>
       <div className="pt-2 pb-1">
         <Link
           href={
-            "https://github.com/abhishekjaiswar221/abhishekjaiswar-portfolio"
+            "https://github.com/abhishekjaiswar221/remote-interview-platform"
           }
           target="_blank"
         >

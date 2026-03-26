@@ -22,9 +22,9 @@ const Home = () => {
                 Real-time Collaboration
               </div>
 
-              <h1 className="text-5xl leading-tight font-black lg:text-7xl">
+              <h1 className="text-5xl leading-tight font-bold lg:text-7xl">
                 <span className="from-primary via-secondary to-accent bg-gradient-to-r bg-clip-text text-transparent">
-                  Code Together,
+                  <span className="font-mono">&lt;Code/&gt; & </span>
                 </span>
                 <br />
                 <span className="text-base-content">Learn Together</span>
@@ -46,29 +46,29 @@ const Home = () => {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
                 <SignInButton mode="modal">
-                  <button className="btn btn-primary btn-lg">
+                  <button className="btn btn-primary btn-lg w-full lg:w-fit">
                     Start Coding Now
                     <ArrowRightIcon className="size-5" />
                   </button>
                 </SignInButton>
 
-                <button className="btn btn-outline btn-lg">
+                <button className="btn btn-outline btn-lg w-full hover:border-white lg:w-fit">
                   <VideoIcon className="size-5" />
                   Watch Demo
                 </button>
               </div>
 
               {/* Stats */}
-              <div className="stats stats-vertical lg:stats-horizontal bg-base-100 shadow-lg">
-                <div className="stat">
+              <div className="stats stats-vertical lg:stats-horizontal bg-base-100 w-full shadow-lg lg:w-fit">
+                <div className="stat text-center">
                   <div className="stat-value text-primary">10K+</div>
                   <div className="stat-title">Active Users</div>
                 </div>
-                <div className="stat">
+                <div className="stat text-center">
                   <div className="stat-value text-secondary">50K+</div>
                   <div className="stat-title">Sessions</div>
                 </div>
-                <div className="stat">
+                <div className="stat text-center">
                   <div className="stat-value text-accent">99.9%</div>
                   <div className="stat-title">Uptime</div>
                 </div>
@@ -78,8 +78,8 @@ const Home = () => {
             {/* Right Image */}
             <img
               src="/images/hero.png"
-              alt="CodeCollab Platform"
-              className="border-base-100 h-auto w-full rounded-3xl border-4 shadow-2xl transition-transform duration-500 hover:scale-105"
+              alt="Code Collaboration Platform"
+              className="h-auto w-full"
             />
           </div>
         </div>
