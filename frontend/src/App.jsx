@@ -1,18 +1,29 @@
-import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/react";
+import Home from "@/pages/Home";
+import Problems from "@/pages/Problems";
+import { useUser } from "@clerk/react";
+import { Toaster } from "react-hot-toast";
+import { createBrowserRouter, Navigate } from "react-router";
+import { RouterProvider } from "react-router/dom";
 
 const App = () => {
-  return (
-    <div>
-      <h1>Welcome to InterviewX</h1>
+  const { isSignedIn } = useUser();
 
-      <Show when="signed-out">
-        <SignInButton mode="modal" />
-      </Show>
-      <Show when="signed-in">
-        <SignUpButton />
-      </Show>
-      <UserButton />
-    </div>
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      Component: Home,
+    },
+    {
+      path: "problems",
+      element: isSignedIn ? <Problems /> : <Navigate to={"/"} />,
+    },
+  ]);
+
+  return (
+    <>
+      <Toaster toastOptions={{ duration: 2000 }} />
+      <RouterProvider router={routes} />
+    </>
   );
 };
 
