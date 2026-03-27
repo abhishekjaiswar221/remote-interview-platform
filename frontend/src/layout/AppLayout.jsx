@@ -1,12 +1,12 @@
 import Footer from "@/components/navigation/Footer";
-import NavBar from "@/components/navigation/NavBar";
+import NavigationBar from "@/components/navigation/NavigationBar";
 import { Outlet } from "react-router";
 
 const AppLayout = () => {
   return (
     <>
-      {/* NavBar */}
-      <NavBar />
+      {/* NavigationBar */}
+      <NavigationBar />
       {/* Children Routes */}
       <Outlet />
       {/* Footer */}

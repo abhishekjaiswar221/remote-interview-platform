@@ -2,7 +2,7 @@ import { UserButton } from "@clerk/react";
 import { BookOpenIcon, LayoutDashboardIcon, SparklesIcon } from "lucide-react";
 import { Link, useLocation } from "react-router";
 
-const NavBar = () => {
+const NavigationBar = () => {
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
@@ -74,4 +74,4 @@ const NavBar = () => {
     </nav>
   );
 };
-export default NavBar;
+export default NavigationBar;
