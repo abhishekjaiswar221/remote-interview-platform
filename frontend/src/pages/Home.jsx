@@ -1,134 +1,184 @@
-import Footer from "@/components/navigation/Footer";
-import Navbar from "@/components/navigation/Navbar";
 import FeatureCard from "@/components/ui/FeatureCard";
-import FeaturePill from "@/components/ui/FeaturePill";
 import { SignInButton } from "@clerk/react";
-import { ArrowRightIcon, VideoIcon, ZapIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  CodeIcon,
+  UsersIcon,
+  VideoIcon,
+  ZapIcon,
+} from "lucide-react";
 
 const Home = () => {
   return (
-    <>
-      <div className="from-base-100 via-base-200 to-base-300 bg-gradient-to-br">
-        {/* Navbar */}
-        <Navbar />
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-base-100 via-base-200 to-base-300">
+      {/* Glow Effects */}
+      <div className="bg-primary/20 absolute top-[-100px] left-[-100px] h-[300px] w-[300px] rounded-full blur-3xl"></div>
+      {/* <div className="bg-secondary/20 absolute right-[-100px] bottom-[-100px] h-[300px] w-[300px] rounded-full blur-3xl"></div> */}
 
-        {/* Hero Section */}
-        <div className="mx-auto max-w-7xl px-4 py-20">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <div className="badge badge-primary badge-lg">
-                <ZapIcon className="size-4" />
-                Real-time Collaboration
-              </div>
-
-              <h1 className="text-5xl leading-tight font-bold lg:text-7xl">
-                <span className="from-primary via-secondary to-accent bg-gradient-to-r bg-clip-text text-transparent">
-                  <span className="font-mono">&lt;Code/&gt; & </span>
-                </span>
-                <br />
-                <span className="text-base-content">Learn Together</span>
-              </h1>
-
-              <p className="text-base-content/70 max-w-xl text-xl leading-relaxed">
-                The ultimate platform for collaborative coding interviews and
-                pair programming. Connect face-to-face, code in real-time, and
-                ace your technical interviews.
-              </p>
-
-              {/* Feature Pills */}
-              <div className="flex flex-wrap gap-3">
-                <FeaturePill text={"Live Video Chat"} />
-                <FeaturePill text={"Code Editor"} />
-                <FeaturePill text={"Multi-Language"} />
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <SignInButton mode="modal">
-                  <button className="btn btn-primary btn-lg w-full lg:w-fit">
-                    Start Coding Now
-                    <ArrowRightIcon className="size-5" />
-                  </button>
-                </SignInButton>
-
-                <button className="btn btn-outline btn-lg w-full hover:border-white lg:w-fit">
-                  <VideoIcon className="size-5" />
-                  Watch Demo
-                </button>
-              </div>
-
-              {/* Stats */}
-              <div className="stats stats-vertical lg:stats-horizontal bg-base-100 w-full shadow-lg lg:w-fit">
-                <div className="stat text-center">
-                  <div className="stat-value text-primary">10K+</div>
-                  <div className="stat-title">Active Users</div>
-                </div>
-                <div className="stat text-center">
-                  <div className="stat-value text-secondary">50K+</div>
-                  <div className="stat-title">Sessions</div>
-                </div>
-                <div className="stat text-center">
-                  <div className="stat-value text-accent">99.9%</div>
-                  <div className="stat-title">Uptime</div>
-                </div>
-              </div>
+      {/* ================= HERO ================= */}
+      <div className="mx-auto max-w-7xl px-4 py-20">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* LEFT */}
+          <div className="space-y-8">
+            <div className="badge badge-outline badge-primary badge-lg gap-2">
+              <ZapIcon className="size-4" />
+              Real-time Collaboration
             </div>
 
-            {/* Right Image */}
-            <img
-              src="/images/hero.png"
-              alt="Code Collaboration Platform"
-              className="h-auto w-full"
-            />
+            <h1 className="text-5xl font-bold leading-tight tracking-tight lg:text-7xl">
+              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Code. Collaborate.
+              </span>
+              <br />
+              <span className="text-base-content">
+                Crack Interviews Faster.
+              </span>
+            </h1>
+
+            <p className="text-base-content/70 max-w-xl text-lg leading-relaxed">
+              Practice coding interviews in real-time with video, shared editor,
+              and seamless collaboration. Built for developers who want to get
+              hired faster.
+            </p>
+
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-3">
+              {["Live Video Chat", "Code Editor", "Multi-Language"].map(
+                (item) => (
+                  <span
+                    key={item}
+                    className="border-base-content/10 bg-base-100/50 rounded-full border px-4 py-2 text-sm backdrop-blur"
+                  >
+                    {item}
+                  </span>
+                ),
+              )}
+            </div>
+
+            {/* CTA */}
+            <div className="flex flex-wrap gap-4">
+              <SignInButton mode="modal">
+                <button className="btn btn-primary btn-lg group w-full lg:w-fit">
+                  Start Coding Now
+                  <ArrowRightIcon className="size-5 transition-transform group-hover:translate-x-1" />
+                </button>
+              </SignInButton>
+
+              <button className="btn btn-outline btn-lg w-full lg:w-fit hover:border-white">
+                <VideoIcon className="size-5" />
+                Watch Demo
+              </button>
+            </div>
+
+            {/* Social Proof */}
+            <p className="text-base-content/60 text-sm">
+              Trusted by developers from Google, Amazon & startups
+            </p>
+
+            {/* Stats */}
+            <div className="flex flex-col w-full md:flex-row lg:w-fit stats bg-base-100/70 backdrop-blur border border-base-content/10 shadow-xl">
+              <div className="stat text-center">
+                <div className="stat-value text-primary">10K+</div>
+                <div className="stat-desc">Active Users</div>
+              </div>
+              <div className="stat text-center">
+                <div className="stat-value text-secondary">50K+</div>
+                <div className="stat-desc">Sessions</div>
+              </div>
+              <div className="stat text-center">
+                <div className="stat-value text-success">99.9%</div>
+                <div className="stat-desc">Uptime</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Code Preview */}
+          <div className="mockup-code text-sm shadow-2xl border border-base-content/10">
+            <pre data-prefix="1">
+              <code className="text-info"># Two Sum — O(n) approach</code>
+            </pre>
+            <pre data-prefix="2">
+              <code>
+                <span className="text-primary">def</span>{" "}
+                <span className="text-secondary">two_sum</span>(nums, target):
+              </code>
+            </pre>
+            <pre data-prefix="3">
+              <code> seen = {"{}"}</code>
+            </pre>
+            <pre data-prefix="4">
+              <code>
+                <span className="text-primary">for</span> i, num{" "}
+                <span className="text-primary">in</span> enumerate(nums):
+              </code>
+            </pre>
+            <pre data-prefix="5">
+              <code> complement = target - num</code>
+            </pre>
+            <pre data-prefix="6">
+              <code>
+                <span className="text-primary">if</span> complement{" "}
+                <span className="text-primary">in</span> seen:
+              </code>
+            </pre>
+            <pre data-prefix="7">
+              <code>
+                <span className="text-primary">return</span> [seen[complement],
+                i]
+              </code>
+            </pre>
+            <pre data-prefix="8">
+              <code> seen[num] = i</code>
+            </pre>
+            <pre data-prefix="$" className="text-success">
+              <code>Output: [0,1] ✓ Accepted</code>
+            </pre>
           </div>
         </div>
+      </div>
 
-        {/* Features Section */}
+      {/* Divider */}
+      <div className="mx-auto my-10 h-1 w-24 rounded-full bg-gradient-to-r from-primary to-accent"></div>
+
+      {/* ================= FEATURES ================= */}
+      <div className="bg-base-200/60 border-t border-base-content/10">
         <div className="mx-auto max-w-7xl px-4 py-20">
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold">
-              Everything You Need to{" "}
-              <span className="text-primary font-mono">Succeed</span>
+          <div className="mb-12 text-center">
+            <div className="badge badge-primary badge-outline mb-4">
+              Features
+            </div>
+            <h2 className="text-4xl font-bold tracking-tight">
+              Everything you need to{" "}
+              <span className="text-primary font-mono">succeed</span>
             </h2>
-            <p className="text-base-content/70 mx-auto max-w-2xl text-lg">
-              Powerful features designed to make your coding interviews seamless
+            <p className="text-base-content/60 mx-auto mt-3 max-w-xl text-lg">
+              Powerful tools designed to make your coding interviews seamless
               and productive
             </p>
           </div>
 
-          {/* Features Grid */}
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Feature 1 */}
+          <div className="grid gap-6 md:grid-cols-3">
             <FeatureCard
-              title={"HD Video Call"}
-              description={
-                "Crystal clear video and audio for seamless communication during interviews"
-              }
+              icon={<VideoIcon className="size-5 text-info" />}
+              title="HD Video Call"
+              description="Crystal clear video and audio with low latency."
             />
-
-            {/* Feature 2 */}
             <FeatureCard
-              title={"Live Code Editor"}
-              description={
-                "Collaborate in real-time with syntax highlighting and multiple language support"
-              }
+              icon={<CodeIcon className="size-5 text-primary" />}
+              title="Live Code Editor"
+              description="Real-time sync with syntax highlighting."
+              featured
             />
-
-            {/* Feature 3 */}
             <FeatureCard
-              title={"Easy Collaboration"}
-              description={
-                "Share your screen, discuss solutions, and learn from each other in real-time"
-              }
+              icon={<UsersIcon className="size-5 text-warning" />}
+              title="Easy Collaboration"
+              description="Discuss, share, and solve problems together."
             />
           </div>
         </div>
-
-        {/* Footer */}
-        <Footer />
       </div>
-    </>
+    </div>
   );
 };
+
 export default Home;
