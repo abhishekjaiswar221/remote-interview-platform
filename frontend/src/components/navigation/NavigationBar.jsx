@@ -32,10 +32,10 @@ const NavigationBar = () => {
         <div className="flex items-center gap-1">
           {/* Problems Page Link */}
           <Link
-            to={"/problems"}
+            to={"/app/problems"}
             className={`px-4 py-2.5 rounded-lg transition-all duration-200 
               ${
-                isActive("/problems")
+                isActive("/app/problems")
                   ? "bg-primary text-primary-content"
                   : "hover:bg-base-200 text-base-content/70 hover:text-base-content"
               }
@@ -50,10 +50,10 @@ const NavigationBar = () => {
 
           {/* Dashboard Page Link */}
           <Link
-            to={"/dashboard"}
+            to={"/app/dashboard"}
             className={`px-4 py-2.5 rounded-lg transition-all duration-200 
               ${
-                isActive("/dashboard")
+                isActive("/app/dashboard")
                   ? "bg-primary text-primary-content"
                   : "hover:bg-base-200 text-base-content/70 hover:text-base-content"
               }

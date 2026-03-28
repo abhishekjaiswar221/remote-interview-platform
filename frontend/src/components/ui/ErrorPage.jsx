@@ -7,10 +7,10 @@ const ErrorPage = () => {
   console.error(error);
 
   return (
-    <div className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-4 text-center">
-      {/* 🔥 Glow Background */}
-      <div className="bg-red-500/20 absolute top-[-100px] left-[-100px] h-[300px] w-[300px] rounded-full blur-3xl"></div>
-      <div className="bg-orange-500/20 absolute bottom-[-100px] right-[-100px] h-[300px] w-[300px] rounded-full blur-3xl"></div>
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 text-center">
+      {/* Glow Background */}
+      {/* <div className="bg-red-500/20 absolute top-[-100px] left-[-100px] h-[300px] w-[300px] rounded-full blur-3xl"></div>
+      <div className="bg-orange-500/20 absolute bottom-[-100px] right-[-100px] h-[300px] w-[300px] rounded-full blur-3xl"></div> */}
 
       <div className="z-10 space-y-6">
         {/* Icon */}
