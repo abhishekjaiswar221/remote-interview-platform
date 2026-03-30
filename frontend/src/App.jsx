@@ -3,58 +3,55 @@ import Problems from "@/pages/Problems";
 import { useUser } from "@clerk/react";
 import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router";
-
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import PublicRoute from "./components/auth/PublicRoute";
 import Loader from "./components/loader/Loader";
+import ErrorPage from "./components/ui/ErrorPage";
 import PageNotFound from "./components/ui/PageNotFound";
 import AppLayout from "./layout/AppLayout";
 import HomeLayout from "./layout/HomeLayout";
 import Dashboard from "./pages/Dashboard";
-import ErrorPage from "./components/ui/ErrorPage";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <HomeLayout />,
-    errorElement: <ErrorPage />,
+    Component: PublicRoute,
+    errorElement: ErrorPage,
     children: [
       {
-        index: true,
-        element: (
-          <PublicRoute>
-            <Home />
-          </PublicRoute>
-        ),
+        Component: HomeLayout,
+        children: [
+          {
+            index: true,
+            Component: Home,
+          },
+        ],
       },
     ],
   },
   {
     path: "app",
-    element: <AppLayout />,
-    errorElement: <ErrorPage />,
+    Component: ProtectedRoute,
+    errorElement: ErrorPage,
     children: [
       {
-        path: "dashboard",
-        element: (
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "problems",
-        element: (
-          <ProtectedRoute>
-            <Problems />
-          </ProtectedRoute>
-        ),
+        Component: AppLayout,
+        children: [
+          {
+            path: "dashboard",
+            Component: Dashboard,
+          },
+          {
+            path: "problems",
+            Component: Problems,
+          },
+        ],
       },
     ],
   },
   {
     path: "*",
-    element: <PageNotFound />,
+    Component: PageNotFound,
   },
 ]);
 

@@ -1,15 +1,15 @@
 import { useUser } from "@clerk/react";
-import { Navigate } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import Loader from "../loader/Loader";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = () => {
   const { isSignedIn, isLoaded } = useUser();
 
   if (!isLoaded) return <Loader />;
 
   if (!isSignedIn) return <Navigate to={"/"} replace />;
 
-  return children;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

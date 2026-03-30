@@ -96,7 +96,7 @@ const Problems = () => {
         {/* Stats */}
         <div className="mt-12 card bg-base-100 shadow-lg">
           <div className="card-body">
-            <div className="stats stats-vertical lg:stats-horizontal">
+            <div className="stats stats-vertical lg:stats-horizontal text-center">
               <div className="stat">
                 <div className="stat-title">Total</div>
                 <div className="stat-value text-primary">{problems.length}</div>

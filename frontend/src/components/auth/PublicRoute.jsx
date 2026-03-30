@@ -1,15 +1,15 @@
 import { useUser } from "@clerk/react";
-import { Navigate } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import Loader from "../loader/Loader";
 
-const RootRedirect = ({ children }) => {
+const PublicRoute = () => {
   const { isSignedIn, isLoaded } = useUser();
 
   if (!isLoaded) return <Loader />;
 
   if (isSignedIn) return <Navigate to={"/app/dashboard"} replace />;
 
-  return children;
+  return <Outlet />;
 };
 
-export default RootRedirect;
+export default PublicRoute;
