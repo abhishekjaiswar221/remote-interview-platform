@@ -11,6 +11,7 @@ import PageNotFound from "./components/ui/PageNotFound";
 import AppLayout from "./layout/AppLayout";
 import HomeLayout from "./layout/HomeLayout";
 import Dashboard from "./pages/Dashboard";
+import Problem from "./pages/Problem";
 
 const routes = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const routes = createBrowserRouter([
           {
             path: "problems",
             Component: Problems,
+          },
+          {
+            path: "problem/:id",
+            Component: Problem,
           },
         ],
       },
