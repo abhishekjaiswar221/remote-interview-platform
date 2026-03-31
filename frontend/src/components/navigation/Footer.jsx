@@ -37,7 +37,7 @@ const Footer = () => {
           </div>
 
           <p className="text-sm">
-            Made with <span className="text-red-500">🩷</span> by{" "}
+            Made with <span className="text-red-500">❤️</span> by{" "}
             <span className="text-primary font-medium">Abhishek Jaiswar</span>
           </p>
         </div>

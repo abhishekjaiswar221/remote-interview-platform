@@ -10,14 +10,16 @@ const CodeEditorPanel = ({
   onCodeChange,
   onRunCode,
 }) => {
+  const currentLang = LANGUAGE_CONFIG[selectedLanguage];
+
   return (
     <div className="h-full bg-base-300 flex flex-col border-b border-base-300">
       {/* Header / Toolbar */}
       <div className="flex items-center justify-between px-4 py-3 bg-base-100 border-b border-base-300 shadow-sm sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <img
-            src={LANGUAGE_CONFIG[selectedLanguage].icon}
-            alt={LANGUAGE_CONFIG[selectedLanguage].name}
+            src={currentLang.icon}
+            alt={currentLang.name}
             className="size-6 rounded-sm"
           />
           <select
@@ -56,14 +58,18 @@ const CodeEditorPanel = ({
       <div className="flex-1 relative">
         <Editor
           height="100%"
-          language={LANGUAGE_CONFIG[selectedLanguage].monacoLang}
+          language={currentLang.monacoLang}
           value={code}
           onChange={onCodeChange}
           theme="vs-dark"
           options={{
             fontSize: 16,
+            lineHeight: 22,
+            padding: { top: 12 },
             lineNumbers: "on",
             scrollBeyondLastLine: false,
+            smoothScrolling: true,
+            cursorSmoothCaretAnimation: "on",
             automaticLayout: true,
             minimap: { enabled: false },
             fontFamily: "'Fira Code', monospace",
