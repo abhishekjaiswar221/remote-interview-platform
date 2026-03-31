@@ -40,7 +40,7 @@ const Problem = () => {
   };
 
   const handleProblemChange = (newProblemId) =>
-    navigate(`/problem/${newProblemId}`);
+    navigate(`/app/problem/${newProblemId}`);
 
   const triggerConfetti = () => {
     confetti({
