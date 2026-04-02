@@ -68,7 +68,7 @@ export async function executeCode(language, code) {
   } catch (error) {
     return {
       success: false,
-      error: `Failed to execute code: ${error.message}`,
+      error: `Failed to execute code: ${error}`,
     };
   }
 }
