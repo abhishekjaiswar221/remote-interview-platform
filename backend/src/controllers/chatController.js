@@ -1,4 +1,5 @@
 import { chatClient } from "../config/stream.js";
+import { logger } from "../lib/utils.js";
 
 export async function getStreamToken(req, res) {
   try {
@@ -12,7 +13,7 @@ export async function getStreamToken(req, res) {
       userImage: req.user.image,
     });
   } catch (error) {
-    console.log("Error in getStreamToken controller:", error);
+    logger.error("Error in getStreamToken controller:", { error });
     res.status(500).json({ message: "Internal Server Error" });
   }
 }

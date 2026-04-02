@@ -1,15 +1,16 @@
 import { app } from "./app.js";
 import { connectMongoDB } from "./config/db.js";
 import { ENV } from "./lib/env.js";
+import { logger } from "./lib/utils.js";
 
 const startServer = async () => {
   try {
     await connectMongoDB();
     app.listen(ENV.PORT, () =>
-      console.log("Server is running on port:", ENV.PORT),
+      logger.info("Server is running on port:", { port: ENV.PORT }),
     );
   } catch (error) {
-    console.error("💥 Error starting the server:", error);
+    logger.error("💥 Error starting the server:", { error });
   }
 };
 

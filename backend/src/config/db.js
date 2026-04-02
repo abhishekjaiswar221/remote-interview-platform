@@ -1,5 +1,18 @@
 import mongoose from "mongoose";
 import { ENV } from "../lib/env.js";
+import { logger } from "../lib/utils.js";
+
+// Enable mongo query logging
+if (ENV.ENVIRONMENT !== "prod") {
+  mongoose.set("debug", (collectionName, method, query, doc) => {
+    logger.info("Mongo Query:", {
+      collection: collectionName,
+      method,
+      query,
+      doc,
+    });
+  });
+}
 
 export const connectMongoDB = async () => {
   try {
@@ -9,12 +22,11 @@ export const connectMongoDB = async () => {
       );
     }
     const connect = await mongoose.connect(ENV.MONGO_DB_URI);
-    console.log(
-      "✅ Connected to MongoDB Successfully:",
-      connect.connection.host,
-    );
+    logger.info("✅ Connected to MongoDB Successfully:", {
+      host: connect.connection.host,
+    });
   } catch (error) {
-    console.log("❌ Error connecting MongoDB:", error);
+    logger.error("❌ Error connecting MongoDB:", { error });
     process.exit(1); // 0 means success, 1 means failure
   }
 };

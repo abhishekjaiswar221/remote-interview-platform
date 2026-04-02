@@ -1,4 +1,5 @@
 import { requireAuth } from "@clerk/express";
+import { logger } from "../lib/utils.js";
 import User from "../models/User.js";
 
 export const protectRoute = [
@@ -22,7 +23,7 @@ export const protectRoute = [
 
       next();
     } catch (error) {
-      console.error("Error in protectRoute middleware", error);
+      logger.error("Error in protectRoute middleware", { error });
       res.status(500).json({ message: "Internal Server Error" });
     }
   },

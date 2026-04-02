@@ -2,13 +2,26 @@ import { clerkMiddleware } from "@clerk/express";
 import cors from "cors";
 import express from "express";
 import { serve } from "inngest/express";
+import morgan from "morgan";
 import path from "path";
 import { functions, inngest } from "./config/inngest.js";
 import { ENV } from "./lib/env.js";
+import { logger } from "./lib/utils.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
 
 export const app = express();
+
+// Morgan request logger
+const format = ENV.ENVIRONMENT === "prod" ? "combined" : "dev";
+
+app.use(
+  morgan(format, {
+    stream: {
+      write: (message) => logger.info(message.trim()),
+    },
+  }),
+);
 
 // Middleware
 app.use(express.json());
