@@ -26,7 +26,7 @@ export const connectMongoDB = async () => {
       host: connect.connection.host,
     });
   } catch (error) {
-    logger.error("❌ Error connecting MongoDB:", { error });
+    logger.error("❌ Error connecting MongoDB:", { error: error.stack });
     process.exit(1); // 0 means success, 1 means failure
   }
 };

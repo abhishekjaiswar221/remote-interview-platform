@@ -10,7 +10,7 @@ const startServer = async () => {
       logger.info("Server is running on port:", { port: ENV.PORT }),
     );
   } catch (error) {
-    logger.error("💥 Error starting the server:", { error });
+    logger.error("💥 Error starting the server:", { error: error.stack });
   }
 };
 

@@ -23,7 +23,7 @@ export const protectRoute = [
 
       next();
     } catch (error) {
-      logger.error("Error in protectRoute middleware", { error });
+      logger.error("Error in protectRoute middleware", { error: error.stack });
       res.status(500).json({ message: "Internal Server Error" });
     }
   },

@@ -18,7 +18,7 @@ export const upsertStreamUser = async (userData) => {
     await chatClient.upsertUser(userData);
     logger.info("Stream user upserted successfully:", { userData });
   } catch (error) {
-    logger.error("Error upserting Stream user:", { error });
+    logger.error("Error upserting Stream user:", { error: error.stack });
   }
 };
 
@@ -27,6 +27,6 @@ export const deleteStreamUser = async (userId) => {
     await chatClient.deleteUser(userId);
     logger.info("Stream user deleted successfully:", { userId });
   } catch (error) {
-    logger.error("Error deleting the Stream user:", { error });
+    logger.error("Error deleting the Stream user:", { error: error.stack });
   }
 };
