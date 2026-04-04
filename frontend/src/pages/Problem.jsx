@@ -1,4 +1,5 @@
 import CodeEditorPanel from "@/components/ui/CodeEditorPanel";
+import MobileLayout from "@/components/ui/MobileLayout";
 import OutputPanel from "@/components/ui/OutputPanel";
 import ProblemDescription from "@/components/ui/ProblemDescription";
 import { PROBLEMS } from "@/data/problems";
@@ -31,6 +32,15 @@ const Problem = () => {
       setOutput(null);
     }
   }, [id, selectedLanguage]);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 1024);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   const handleLanguageChange = (e) => {
     const newLang = e.target.value;
@@ -106,11 +116,23 @@ const Problem = () => {
   };
 
   return (
-    <>
-      <div className="flex h-screen flex-col bg-base-100">
+    <div className="flex h-screen flex-col bg-base-100">
+      {isMobile ? (
+        <MobileLayout
+          currentProblem={currentProblem}
+          currentProblemId={currentProblemId}
+          handleProblemChange={handleProblemChange}
+          selectedLanguage={selectedLanguage}
+          code={code}
+          isRunning={isRunning}
+          output={output}
+          handleLanguageChange={handleLanguageChange}
+          setCode={setCode}
+          handleRunCode={handleRunCode}
+        />
+      ) : (
         <div className="flex-1 overflow-hidden">
           <PanelGroup direction="horizontal">
-            {/* Left Panel */}
             <Panel defaultSize={38} minSize={25}>
               <div className="h-full overflow-y-auto border-r border-base-300">
                 <ProblemDescription
@@ -122,15 +144,10 @@ const Problem = () => {
               </div>
             </Panel>
 
-            {/* Resize Handle */}
-            <PanelResizeHandle className="group relative w-1.5 bg-base-300 transition-all hover:bg-primary">
-              <div className="absolute inset-y-0 left-1/2 w-[2px] -translate-x-1/2 bg-base-content/20 group-hover:bg-primary"></div>
-            </PanelResizeHandle>
+            <PanelResizeHandle className="group relative w-1.5 bg-base-300 hover:bg-primary" />
 
-            {/* Right Panel */}
             <Panel defaultSize={62} minSize={30}>
               <PanelGroup direction="vertical">
-                {/* Code Editor */}
                 <Panel defaultSize={72} minSize={30}>
                   <div className="h-full border-b border-base-300">
                     <CodeEditorPanel
@@ -144,12 +161,8 @@ const Problem = () => {
                   </div>
                 </Panel>
 
-                {/* Horizontal Resize */}
-                <PanelResizeHandle className="group relative h-1.5 bg-base-300 hover:bg-primary">
-                  <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-base-content/20 group-hover:bg-primary"></div>
-                </PanelResizeHandle>
+                <PanelResizeHandle className="group relative h-1.5 bg-base-300 hover:bg-primary" />
 
-                {/* Output Panel */}
                 <Panel defaultSize={28} minSize={20}>
                   <div className="h-full overflow-y-auto">
                     <OutputPanel output={output} isRunning={isRunning} />
@@ -159,8 +172,8 @@ const Problem = () => {
             </Panel>
           </PanelGroup>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
