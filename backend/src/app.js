@@ -25,8 +25,9 @@ app.use(
 
 // Middleware
 app.use(express.json());
+const allowedOrigins = ENV.CLIENT_URL.split(",");
 // Credentials: true meaning?? => server allows a browser to include cookies on request
-app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 // Clerk Middleware
 app.use(clerkMiddleware()); // This adds auth field to request object: req.auth()
 
