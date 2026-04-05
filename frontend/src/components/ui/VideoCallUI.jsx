@@ -38,16 +38,15 @@ const VideoCallUI = ({ chatClient, channel }) => {
   }
 
   return (
-    <div className="h-full flex relative str-video overflow-hidden">
-      <div className="flex-1 flex flex-col gap-3 p-3">
-        <div className="flex items-center justify-between px-4 py-2 rounded-xl bg-base-100/70 backdrop-blur-md shadow-md border border-base-300">
+    <div className="h-full flex gap-3 relative str-video">
+      <div className="flex-1 flex flex-col gap-3 p-3 transition-all duration-300">
+        <div className="flex items-center justify-between px-4 py-2 rounded-xl bg-base-100/70 backdrop-blur-md shadow border border-base-300">
           <div className="flex items-center gap-3">
             <UsersIcon className="w-5 h-5 text-primary" />
             <span className="font-medium">
               {participantCount}{" "}
               {participantCount === 1 ? "participant" : "participants"}
             </span>
-
             <span className="badge badge-success animate-pulse text-xs">
               Live
             </span>
@@ -56,8 +55,8 @@ const VideoCallUI = ({ chatClient, channel }) => {
           {chatClient && channel && (
             <button
               onClick={() => setIsChatOpen(!isChatOpen)}
-              className={`btn btn-sm gap-2 transition-all duration-200 ${
-                isChatOpen ? "btn-primary scale-105" : "btn-ghost"
+              className={`btn btn-sm gap-2 transition-all ${
+                isChatOpen ? "btn-primary" : "btn-ghost"
               }`}
             >
               <MessageSquareIcon className="size-4" />
@@ -66,13 +65,13 @@ const VideoCallUI = ({ chatClient, channel }) => {
           )}
         </div>
 
-        <div className="flex-1 relative rounded-xl overflow-hidden border border-base-300 shadow-lg bg-base-300">
+        <div className="flex-1 relative rounded-xl overflow-hidden border border-base-300 shadow bg-base-300">
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 pointer-events-none" />
           <SpeakerLayout />
         </div>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
-          <div className="bg-base-100/80 backdrop-blur-lg px-4 py-2 rounded-full shadow-xl border border-base-300">
+        <div className="flex justify-center">
+          <div className="bg-base-100/80 backdrop-blur px-4 py-2 rounded-full shadow border border-base-300">
             <CallControls onLeave={() => navigate("/app/dashboard")} />
           </div>
         </div>
@@ -80,10 +79,10 @@ const VideoCallUI = ({ chatClient, channel }) => {
 
       {chatClient && channel && (
         <div
-          className={`absolute right-0 top-0 h-full w-80 bg-[#1e2025] border-l border-[#3a3d44] transform transition-all duration-300 ease-in-out z-30
-          ${isChatOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}
+          className={`transition-all duration-300 ease-in-out overflow-hidden
+          ${isChatOpen ? "w-80 opacity-100" : "w-0 opacity-0"}`}
         >
-          <div className="flex flex-col h-full">
+          <div className="h-full w-80 flex flex-col rounded-xl shadow bg-[#1e2025] border border-[#3a3d44]">
             <div className="p-3 flex items-center justify-between border-b border-[#3a3d44]">
               <h3 className="font-semibold text-white">Session Chat</h3>
               <button
