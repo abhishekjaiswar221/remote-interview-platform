@@ -17,6 +17,6 @@ router.get("/recent-sessions", protectRoute, getRecentSessions);
 
 router.get("/:id", protectRoute, getSessionById);
 router.post("/:id/join", protectRoute, joinSession);
-router.get("/:id/end", protectRoute, endSession);
+router.post("/:id/end", protectRoute, endSession);
 
 export default router;

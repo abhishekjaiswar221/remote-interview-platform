@@ -12,6 +12,7 @@ import AppLayout from "./layout/AppLayout";
 import HomeLayout from "./layout/HomeLayout";
 import Dashboard from "./pages/Dashboard";
 import Problem from "./pages/Problem";
+import Session from "./pages/Session";
 
 const routes = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const routes = createBrowserRouter([
           {
             path: "problem/:id",
             Component: Problem,
+          },
+          {
+            path: "session/:id",
+            Component: Session,
           },
         ],
       },

@@ -35,9 +35,9 @@ export const useRecentSessions = () => {
 export const useSessionById = (id) => {
   const result = useQuery({
     queryKey: ["session", id],
-    queryFn: sessionService.getSessionById(id),
+    queryFn: () => sessionService.getSessionById(id),
     enabled: !!id,
-    refetchInterval: 5000, // Refetch every 5 seconds to detect the status change
+    refetchInterval: 5000, // Refetch every 5 seconds to detect the session status changes
   });
 
   return result;

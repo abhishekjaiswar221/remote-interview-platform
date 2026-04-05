@@ -103,7 +103,7 @@ const ActiveSessions = ({ sessions, isLoading, isUserInSession }) => {
                       </button>
                     ) : (
                       <Link
-                        to={`/session/${session._id}`}
+                        to={`/app/session/${session._id}`}
                         className="btn btn-primary btn-sm w-full sm:w-auto flex items-center justify-center gap-1.5 transition-transform sm:group-hover:scale-105"
                       >
                         {isUserInSession(session) ? "Rejoin" : "Join"}
