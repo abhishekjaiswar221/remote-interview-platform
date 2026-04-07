@@ -19,14 +19,48 @@ const syncUser = inngest.createFunction(
       email: email_addresses[0]?.email_address,
       name: `${first_name || ""} ${last_name || ""}`,
       profileImage: image_url,
+      role: "user",
     };
 
-    await User.create(newUser);
+    await User.findOneAndUpdate({ clerkId: id }, newUser, {
+      upsert: true,
+      new: true,
+    }); // create if not exists, update if exists
 
     await upsertStreamUser({
       id: newUser.clerkId.toString(),
       name: newUser.name,
       image: newUser.profileImage,
+    });
+  },
+);
+
+const updateUser = inngest.createFunction(
+  { id: "update-user" },
+  { event: "clerk/user.updated" },
+  async ({ event }) => {
+    await connectMongoDB();
+
+    const {
+      id,
+      first_name,
+      last_name,
+      email_addresses,
+      image_url,
+      public_metadata,
+    } = event.data;
+
+    const updatedUser = {
+      clerkId: id,
+      email: email_addresses[0].email_address,
+      name: `${first_name || ""} ${last_name || ""}`,
+      profileImage: image_url,
+      role: public_metadata?.role || "user",
+    };
+
+    await User.findOneAndUpdate({ clerkId: id }, updatedUser, {
+      upsert: true,
+      new: true,
     });
   },
 );
@@ -44,4 +78,4 @@ const deleteUserFromDB = inngest.createFunction(
   },
 );
 
-export const functions = [syncUser, deleteUserFromDB];
+export const functions = [syncUser, updateUser, deleteUserFromDB];
