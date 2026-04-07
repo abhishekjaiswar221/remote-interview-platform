@@ -31,3 +31,9 @@ export const logger = winston.createLogger({
     // new winston.transports.File({ filename: "logs/error.log", level: "error" }), // For error-specific logs
   ],
 });
+
+export const LANGUAGE_VERSIONS = {
+  javascript: { language: "javascript", version: "18.15.0" },
+  java: { language: "java", version: "15.0.2" },
+  python: { language: "python", version: "3.10.0" },
+};
