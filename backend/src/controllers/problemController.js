@@ -1,6 +1,26 @@
 import { logger } from "../lib/utils.js";
 import Problem from "../models/Problem.js";
 
+export const getAllProblems = async (_, res) => {
+  try {
+    const problems = await Problem.find();
+
+    if (!problems.length)
+      return res.status(404).json({ message: "No problems found" });
+
+    return res.status(200).json({
+      message: "Problems retrieved successfully!",
+      data: problems,
+    });
+  } catch (error) {
+    logger.error("Error in getAllProblems controller", { stack: error.stack });
+    return res.status(500).json({
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
+
 export const addProblem = async (req, res) => {
   try {
     const {
