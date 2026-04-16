@@ -116,3 +116,29 @@ export const updateProblem = async (req, res) => {
       .json({ message: "Internal Server Error", error: error.message });
   }
 };
+
+export const deleteProblem = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Validate if the problem id exist in the request path
+    if (!id) return res.status(400).json({ message: "Problem ID is required" });
+
+    const deletedProblem = await Problem.findOneAndDelete({ id });
+
+    if (!deletedProblem)
+      return res
+        .status(404)
+        .json({ message: `Problem with the ID ${id} not found` });
+
+    return res.status(200).json({
+      message: "Problem deleted successfully!",
+      data: deletedProblem,
+    });
+  } catch (error) {
+    logger.error("Error in deleteProblem controller", { stack: error.stack });
+    return res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
+  }
+};
