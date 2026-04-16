@@ -1,0 +1,8 @@
+Notes Platform Project
+JS Concepts & DSA Learn & Practice
+Practice MongoDB with MFlix Data
+
+Migrate piston service to your backend
+Self host your piston instance on oracle cloud infrastructure
+Add a feature that the admin user can add, update and delete problems
+Redesign you entire ui and choose a proper custom daisy ui theme for your app
