@@ -1,7 +1,7 @@
 import { app } from "./app.js";
 import { connectMongoDB } from "./config/db.js";
 import { ENV } from "./lib/env.js";
-import { logger } from "./lib/utils.js";
+import { logger } from "./lib/logger.js";
 
 const startServer = async () => {
   try {

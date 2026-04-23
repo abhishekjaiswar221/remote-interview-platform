@@ -1,4 +1,4 @@
-import { logger } from "../lib/utils.js";
+import { logger } from "../lib/logger.js";
 import Problem from "../models/Problem.js";
 
 export const getAllProblems = async (_, res) => {

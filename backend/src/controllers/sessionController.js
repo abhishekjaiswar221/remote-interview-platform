@@ -1,5 +1,5 @@
 import { chatClient, streamClient } from "../config/stream.js";
-import { logger } from "../lib/utils.js";
+import { logger } from "../lib/logger.js";
 import Session from "../models/Session.js";
 
 export async function createSession(req, res) {

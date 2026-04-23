@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { ENV } from "../lib/env.js";
-import { logger } from "../lib/utils.js";
+import { logger } from "../lib/logger.js";
 
 // Enable mongo query logging
 if (ENV.ENVIRONMENT !== "prod") {

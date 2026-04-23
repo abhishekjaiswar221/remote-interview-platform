@@ -6,7 +6,7 @@ import morgan from "morgan";
 import path from "path";
 import { functions, inngest } from "./config/inngest.js";
 import { ENV } from "./lib/env.js";
-import { logger } from "./lib/utils.js";
+import { logger } from "./lib/logger.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
 import problemRoutes from "./routes/problemRoutes.js";
