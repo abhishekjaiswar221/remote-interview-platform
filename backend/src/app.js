@@ -14,7 +14,7 @@ import problemRoutes from "./routes/problemRoutes.js";
 export const app = express();
 
 // Morgan request logger
-const format = ENV.ENVIRONMENT === "prod" ? "combined" : "dev";
+const format = ENV.NODE_ENV === "production" ? "combined" : "development";
 
 app.use(
   morgan(format, {
@@ -49,7 +49,7 @@ app.use("/api/problem", problemRoutes);
 const __dirname = path.resolve();
 
 // Used in production when deployed
-if (ENV.ENVIRONMENT === "prod") {
+if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   app.get("/{*any}", (_, res) => {

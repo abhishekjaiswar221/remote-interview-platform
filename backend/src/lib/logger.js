@@ -2,7 +2,7 @@ import winston from "winston";
 import { ENV } from "./env.js";
 
 const devFormat =
-  ENV.ENVIRONMENT !== "prod"
+  ENV.NODE_ENV !== "production"
     ? winston.format.combine(winston.format.colorize(), winston.format.simple())
     : winston.format.json();
 
@@ -17,7 +17,7 @@ const logFormat = winston.format.printf(
 );
 
 export const logger = winston.createLogger({
-  level: ENV.ENVIRONMENT !== "prod" ? "debug" : "info",
+  level: ENV.NODE_ENV !== "production" ? "debug" : "info",
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.errors({ stack: true }), // Ensures stack trace for errors

@@ -3,7 +3,7 @@ import { ENV } from "../lib/env.js";
 import { logger } from "../lib/logger.js";
 
 // Enable mongo query logging
-if (ENV.ENVIRONMENT !== "prod") {
+if (ENV.NODE_ENV !== "production") {
   mongoose.set("debug", (collectionName, method, query, doc) => {
     logger.info("Mongo Query:", {
       collection: collectionName,
