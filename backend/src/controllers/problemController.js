@@ -1,4 +1,6 @@
+import http from "../config/axios.js";
 import { logger } from "../lib/logger.js";
+import { LANGUAGE_VERSIONS } from "../lib/utils.js";
 import Problem from "../models/Problem.js";
 
 export const getAllProblems = async (_, res) => {
@@ -160,5 +162,31 @@ export const deleteProblem = async (req, res) => {
     return res
       .status(500)
       .json({ message: "Internal Server Error", error: error.message });
+  }
+};
+
+export const executeProblem = async (req, res) => {
+  try {
+    const { language, code } = req.body;
+
+    const languageConfig = LANGUAGE_VERSIONS[language];
+
+    if (!languageConfig) {
+      return res
+        .status(400)
+        .json({ message: `Unsupported language: ${language}` });
+    }
+
+    try {
+      const response = await http.post();
+    } catch (error) {
+      console.log(error);
+    }
+
+    return res.status(200).json({ message: "Code execution completed" });
+  } catch (error) {
+    logger.error("Error in executeCodeController", {
+      stack: error.stack,
+    });
   }
 };
