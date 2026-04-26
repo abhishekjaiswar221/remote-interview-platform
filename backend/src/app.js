@@ -26,7 +26,12 @@ app.use(
 
 // Middleware
 app.use(express.json());
-const allowedOrigins = ENV.CLIENT_URL.split(",");
+
+if (!ENV.CLIENT_URL) {
+  throw new Error("CLIENT_URL is not defined");
+}
+
+const allowedOrigins = ENV.CLIENT_URL?.split(",") || [];
 // Credentials: true meaning?? => server allows a browser to include cookies on request
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 // Clerk Middleware
